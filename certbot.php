@@ -29,7 +29,11 @@ if (file_exists(CERTBOT_PATH."/certbot-auto")) {
 		}
 	}
 }else{
-	echo "<pre> CERTBOT not installed in '".CERTBOT_PATH."' please configure file</pre>";
+	echo "<pre> CERTBOT not installed in '".CERTBOT_PATH."' please configure file</pre><br>
+				This relies on CERTBOT already being installed on your system, please configure this file by changing:
+	<code>DEFINE('CERTBOT_PATH','/root/')</code>
+	to wherever Certbot is installed
+	";
 }
 $users = scandir('//home//');
 //Add any directrories which are not cwp-users in this array
@@ -45,10 +49,16 @@ echo "<br>";
 <h3>Certbot Module</h3>
 <p>
 	Welcome to the certbot module for CWP
-
-	This relies on CERTBOT already being installed on your system, please configure this file by changing:
-	<code>DEFINE('CERTBOT_PATH',"/root/")</code>
-	To wherever Certbot is installed
+	<br>
+	Fill in the information below, e.g.:
+	<br>
+	<br>
+	Domain: example.com<br>
+	Account: example<br>
+	Email: john.smith@example.com<br>
+	<br>
+	Once SSL has been recieved from letsencrypt and there has been a success message given, install the SSL through the SSL Cert Manager
+	located under 'Apache Settings'
 </p>
 <div style="width: 200px;">
 	<form method="post">
