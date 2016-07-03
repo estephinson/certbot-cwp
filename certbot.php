@@ -35,16 +35,17 @@ if (file_exists(CERTBOT_PATH."/certbot-auto")) {
 	to wherever Certbot is installed
 	";
 }
-$users = scandir('//home//');
-//Add any directrories which are not cwp-users in this array
-$misc_users = ['.','..','ts3srv'];
-$drop_down = array();
-foreach ($users as $user) {
-	if (!in_array($user,$misc_users) ) {
-		array_push($drop_down,$user);
-	}
+
+$conn = new mysqli($db_host,$db_user,$db_pass,$db_name);
+
+if ($conn->connect_error) {
+	echo "<pre>Error Connecting to database</pre>";
 }
-echo "<br>";
+
+$sql = "SELECT username FROM user;";
+$result = $conn->query($sql);
+$drop_down= $result->fetch_all(MYSQLI_NUM);
+$conn->close();
 ?>
 <h3>Certbot Module</h3>
 <p>
@@ -69,7 +70,7 @@ echo "<br>";
 		<label for="acc">Account Name:</label>
 		<select class="" name="acc">
 			<?php foreach ($drop_down as $user): ?>
-				<option value="<? echo $user ?>"><? echo $user ?></option>
+				<option value="<? echo $user[0] ?>"><? echo $user[0] ?></option>
 			<?php endforeach; ?>
 		</select>
 		<br>
