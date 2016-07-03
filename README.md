@@ -18,7 +18,7 @@ And add the following line
 <li><a href="index.php?module=certbot"><span class="icon16 icomoon-icon-arrow-right-3"></span>Certbot</a></li>
 ```
 ## Configuration
-To configure Cerbot Module so that it knows where to find your certbot installation, change the following:
+To configure Certbot Module so that it knows where to find your certbot installation, change the following:
 ```php
 	DEFINE('CERTBOT_PATH',"/root/");
 ```
