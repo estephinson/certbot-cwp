@@ -7,6 +7,7 @@
 			$acc = $_POST["acc"];
 			$email = $_POST["email"];
 			$error = false;
+
 			if (strlen($domain) ==0) {
 				echo "<pre>Invalid domain name</pre>";
 				$error = true;
@@ -15,10 +16,11 @@
 				echo "<pre>Please enter an account</pre>";
 				$error = true;
 			}
-			if(strlen($email)==0){
+			if(strlen($email)==0 || filter_var($email,FILTER_VALIDATE_EMAIL)===false ){
 				echo "<pre>Please enter an email</pre>";
 				$error = true;
 			}
+			
 			if (!error) {
 				$command = "cd ".CERTBOT_PATH." && ./certbot-auto certonly --email $email --agree-tos --renew-by-default --webroot  -w /home/$acc/public_html/ -d $domain && cp -f /etc/letsencrypt/live/$domain/fullchain.pem /etc/pki/tls/certs/$domain.crt && cp -f /etc/letsencrypt/live/$domain/privkey.pem /etc/pki/tls/private/$domain.key && cp -f /etc/letsencrypt/live/$domain/chain.pem /etc/pki/tls/certs/$domain.bundle";
 				echo "<pre>";
@@ -30,6 +32,7 @@
 		echo "<pre> CERTBOT not installed in '".CERTBOT_PATH."' please configure file</pre>";
 	}
 	$users = scandir('//home//');
+	//Add any directrories which are not cwp-users in this array
 	$misc_users = ['.','..','ts3srv'];
 	$drop_down = array();
 	foreach ($users as $user) {
