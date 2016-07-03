@@ -1,4 +1,4 @@
-<?php 
+<?php
 	//Config
 	DEFINE('CERTBOT_PATH',"/root/");
 	if (isset($_POST["createCert"])) {
@@ -14,13 +14,21 @@
 		echo "</pre>";
 	}
 
-	
+
 	echo "<br>";
  ?>
-
+	<p>
+		Welcome to the certbot module for CWP
+	</p>
  <form method="post">
+	 <label for="domain">Domain Name:</label>
  	<input type="text" name="domain" placeholder="Domain Name... ">
+	<br>
+	<label for="acc">Account Name:</label>
  	<input type="text" name="acc" placeholder="Account Name...">
+	<br>
+	<label for="email">Email:</label>
  	<input type="text" name="email" placeholder="Email...">
+	<br>
  	<button name="createCert">Create</button>
  </form>
