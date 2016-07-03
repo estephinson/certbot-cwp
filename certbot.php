@@ -2,7 +2,6 @@
 	//Config
 	DEFINE('CERTBOT_PATH',"/root/");
 	if (file_exists(CERTBOT_PATH."/certbot-auto")) {
-		# code...
 		if (isset($_POST["createCert"])) {
 			$domain = $_POST["domain"];
 			$acc = $_POST["acc"];
