@@ -8,7 +8,7 @@ if (file_exists(CERTBOT_PATH."/certbot-auto")) {
 		$email = $_POST["email"];
 		$error = false;
 
-		if (strlen($domain) ==0) {
+		if (strlen($domain)==0) {
 			echo "<pre>Invalid domain name</pre>";
 			$error = true;
 		}
@@ -16,7 +16,7 @@ if (file_exists(CERTBOT_PATH."/certbot-auto")) {
 			echo "<pre>Please enter an account</pre>";
 			$error = true;
 		}
-		if(strlen($email)==0 || filter_var($email,FILTER_VALIDATE_EMAIL)===false ){
+		if(strlen($email)==0 || filter_var($email,FILTER_VALIDATE_EMAIL)===false){
 			echo "<pre>Please enter an email</pre>";
 			$error = true;
 		}
@@ -31,9 +31,8 @@ if (file_exists(CERTBOT_PATH."/certbot-auto")) {
 }else{
 	echo "<pre> CERTBOT not installed in '".CERTBOT_PATH."' please configure file</pre><br>
 				This relies on CERTBOT already being installed on your system, please configure this file by changing:
-	<code>DEFINE('CERTBOT_PATH','/root/')</code>
-	to wherever Certbot is installed
-	";
+				<code>DEFINE('CERTBOT_PATH','/root/')</code>
+				to where Certbot is installed";
 }
 
 $conn = new mysqli($db_host,$db_user,$db_pass,$db_name);
