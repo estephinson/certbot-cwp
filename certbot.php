@@ -21,7 +21,7 @@ if (file_exists(CERTBOT_PATH."/certbot-auto")) {
 			$error = true;
 		}
 
-		if (!error) {
+		if (!$error) {
 			$command = "cd ".CERTBOT_PATH." && ./certbot-auto certonly --email $email --agree-tos --renew-by-default --webroot  -w /home/$acc/public_html/ -d $domain && cp -f /etc/letsencrypt/live/$domain/fullchain.pem /etc/pki/tls/certs/$domain.crt && cp -f /etc/letsencrypt/live/$domain/privkey.pem /etc/pki/tls/private/$domain.key && cp -f /etc/letsencrypt/live/$domain/chain.pem /etc/pki/tls/certs/$domain.bundle";
 			echo "<pre>";
 			echo shell_exec($command);
